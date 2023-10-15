@@ -1,26 +1,35 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
-import express from 'express'
-import mongoose from 'mongoose';
+// Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
+
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+// Middleware
+// app.use('/employees', () => {
+//     console.log('Middleware Running');
+// });
+
+// Routes 
+// app.get('/', (req, res) => {
+//     res.send('Hello World');
+// });
 
 
-app.use((req, res, next) =>{
-    res.status(200).json({
-        message: 'It works!'
-    });
-});
+// app.get('/employees', (req, res) => {
+//     res.send('Employees');
+// });
 
+const connectDB = require('./config/db');
+// Load Config
+dotenv.config({path: './config/config.env'})
 
+connectDB();
 
-//Connecting to DB
-mongoose.connect('mongodb://localhost:27017/Algorythmics',
-    { useNewUrlParser: true },
-    function (){
-        console.log('connected to database');
-    } 
-);
+// Routes
+app.use('/', require('./routes/index'));
 
-
- module.exports = app;
+app.listen(5000);
