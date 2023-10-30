@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const ObjectId = require('mongoose').Types.ObjectId;
-const { Algorithm } = require('../models/algorithm');
+const { Algorithm } = require('../models/algorithm-model');
+const { getAllAlgorithm } = require('../controller/algorithm-controller');
 
-// Get All Algorithms
+
+//Get All Algorithms
 router.get('/algorythmics/algorithm', async (req, res) => {
     try {
         const data = await Algorithm.find({});
@@ -14,8 +16,11 @@ router.get('/algorythmics/algorithm', async (req, res) => {
     }
 });
 
-// Get Single Algorithm
-router.get('/algorythmics/algorithm/:id', async (req, res) => {
+
+
+
+//Get Single Algorithm by id
+router.get('/algorythmics/:id', async (req, res) => {
     try {
         const data = await Algorithm.findById(req.params.id);
         if (!data) {
@@ -28,6 +33,7 @@ router.get('/algorythmics/algorithm/:id', async (req, res) => {
         res.status(500).json({ code: 500, message: 'Hiba történt a lekérdezés során.' });
     }
 });
+
 
 router.post('/algorythmics/algorithm/add', async (req, res) => {
     try {
@@ -75,5 +81,25 @@ router.delete('/algorythmics/algorithm/:id', async (req, res) => {
         res.status(500).json({ code: 500, message: 'Hiba történt az algoritmus törlésekor' });
     }
 });
+
+
+//lekerdezes tipus szerint
+router.get('/algorythmics/type/:type', async (req, res) => {
+    try {
+        const type = req.params.type;
+        const data = await Algorithm.find({ type: type });
+
+        if (data.length === 0) {
+            res.status(404).json({ code: 404, message: 'Nincsenek algoritmusok a megadott típus alapján' });
+        } else {
+            res.status(200).json({ code: 200, message: 'Sikeres lekérdezés', algorithms: data });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ code: 500, message: 'Hiba történt a lekérdezés során.' });
+    }
+});
+
+
 
 module.exports = router;
