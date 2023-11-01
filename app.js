@@ -20,6 +20,7 @@ connectDB();
 // Routes
 //app.use('/', require('./routes/algorithm'));
 //app.use('/', require('./routes/video'));
-app.use('/', require('./routes/animation'));
+//app.use('/', require('./routes/animation'));
+app.use('/', require('./routes/quiz'));
 
 app.listen(5000);
