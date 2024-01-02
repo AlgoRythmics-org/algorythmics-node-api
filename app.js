@@ -3,9 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-
-// Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
-
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -17,10 +14,21 @@ dotenv.config({path: './config/config.env'})
 
 connectDB();
 
-// Routes
-//app.use('/', require('./routes/algorithm'));
-//app.use('/', require('./routes/video'));
-//app.use('/', require('./routes/animation'));
-app.use('/', require('./routes/quiz'));
-
 app.listen(5000);
+
+//const insertVideo = require('./dataInsertion/videoData');
+
+ // Insert data into database
+//  insertVideo.insertVideoData({
+//     video_name: 'Shell-sort with Hungarian (Székely) folk dance',
+//     link: 'https://www.youtube.com/watch?v=CmPA7zE8mx0&t=9s'
+//   });
+
+// Import your models
+const Video = require('./models/videoModel'); 
+
+// Import the routers
+const videoRouter = require('./routes/videoRouter.js');
+
+// Use the routers with different paths
+app.use('/api/video', videoRouter);
