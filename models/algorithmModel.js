@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const algorithmSchema = new mongoose.Schema({
-    name: {
+    algorithm_name: {
         type: String,
         required: true
     },
-    type: {
+    algorithm_type: {
         type: String,
         required: true
     },
@@ -28,7 +28,7 @@ const algorithmSchema = new mongoose.Schema({
     implementation_type: {
         type: String,
         required: true
-    },
+    }
 
 });
 

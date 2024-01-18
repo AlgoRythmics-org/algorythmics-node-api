@@ -1,6 +1,6 @@
-const  Algorithm  = require( "../models/algorithm-model");
+const  {Algorithm}  = require( "../models/algorithmModel");
 
-const getAllAlgorithm = async (re, res, next) => {
+const getAllAlgorithm = async (req, res) => {
     let algorithms; 
     try{
 
@@ -15,4 +15,8 @@ const getAllAlgorithm = async (re, res, next) => {
     }
 
     return res.status(200).json({algorithms});
+}
+
+module.exports = {
+    getAllAlgorithm
 }

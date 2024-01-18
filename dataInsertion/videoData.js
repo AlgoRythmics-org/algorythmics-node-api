@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Video } = require('../models/videoModel'); // Az elérési útvonalat a projekt struktúrájához igazítsd
+const { Video } = require('../models/videoModel'); 
 
 async function insertVideoData(videoData) {
   try {
@@ -8,7 +8,6 @@ async function insertVideoData(videoData) {
   } catch (error) {
     console.error('Error inserting data:', error);
   } finally {
-    // Ne felejtsd el lezárni a kapcsolatot, amikor kész vagy vele
     mongoose.connection.close();
   }
 }
