@@ -6,4 +6,6 @@ const algorithmController = require('../controller/algorithmController');
 
 router.get('/allAlgorithms', algorithmController.getAllAlgorithm);
 
+router.get('/:id', algorithmController.getOneAlgorithmById);
+
 module.exports = router;

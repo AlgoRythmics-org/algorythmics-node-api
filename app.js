@@ -14,7 +14,23 @@ dotenv.config({path: './config/config.env'})
 
 connectDB();
 
-app.listen(5000);
+//app.listen(5000);
+
+const PORT = process.env.PORT || 5000;
+
+// Synchronize the database and start the server
+connectDB()
+  .then(() => {
+    console.log('Database connected');
+    // Start the server after the database is connected
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('Error connecting to the database:', error);
+  });
+
 
 //const insertVideo = require('./dataInsertion/videoData');
 //const insertAlgorithm = require('./dataInsertion/algorithmData');
