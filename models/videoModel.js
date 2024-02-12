@@ -8,6 +8,11 @@ const videoSchema = new mongoose.Schema({
    link: {
         type: String,
         required: true
+    },
+    algorithm_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Algorithm',  
+        required: true
     }
   
 });

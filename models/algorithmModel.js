@@ -1,6 +1,8 @@
+const { ObjectId, Double, Binary } = require('mongodb');
 const mongoose = require('mongoose');
 
 const algorithmSchema = new mongoose.Schema({
+
     algorithm_name: {
         type: String,
         required: true
@@ -28,8 +30,18 @@ const algorithmSchema = new mongoose.Schema({
     implementation_type: {
         type: String,
         required: true
+    },
+    learning_steps: {
+        type: String,
+        required: true
+     },
+    image_file: {
+        type: String
+    },
+    detail_description: {
+        type: String
     }
-
+    
 });
 
 const Algorithm = mongoose.model('Algorithm', algorithmSchema);

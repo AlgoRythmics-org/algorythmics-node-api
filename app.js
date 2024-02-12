@@ -44,7 +44,7 @@ connectDB()
 // insertAlgorithm.insertAlgorithmData({
 //     algorithm_name: 'Bubble sort',
 //     algorithm_type: 'Sorting',
-//     description: 'Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order. This algorithm is not suitable for large data sets as its average and worst-case time complexity is quite high.',
+//     description: 'Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.',
 //     visualization_type: 'Hungarian folk dance',
 //     complexity: 'Easy',
 //     difficulty: 'best-case',
