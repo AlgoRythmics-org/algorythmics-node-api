@@ -34,6 +34,8 @@ connectDB()
 
 //const insertVideo = require('./dataInsertion/videoData');
 //const insertAlgorithm = require('./dataInsertion/algorithmData');
+//const insertQuiz = require('./dataInsertion/quizData');
+
 
  // Insert data into database
 //  insertVideo.insertVideoData({
@@ -52,14 +54,29 @@ connectDB()
 //     visualization_type: 'folk dance'
 // })
 
+// insertQuiz.insertQuizData({
+//   question: 'Consider the array: Array: [10,20,30,40,50,60,70,80,90] If we perform a binary search to find the element 70 in the given array, how many comparisons will be made?',
+//   answer1: '1',
+//   answer2: '2',
+//   answer3: '3',
+//   answer4: '4',
+//   correctAnswer: 'c',
+//   score: 10 ,
+//   clickedAnswer: '',
+//   algorithm_id: '653d3dfece1b18cbd8bd14b9'
+// })
+
 // Import your models
 const Video = require('./models/videoModel'); 
 const Algorithm = require('./models/algorithmModel')
+const Quiz = require('./models/quizModel')
 
 // Import the routers
 const videoRouter = require('./routes/videoRouter.js');
 const algorithmRouter = require('./routes/algorithmRouter.js')
+const quizRouter = require('./routes/quizRouter.js')
 
 // Use the routers with different paths
 app.use('/api/video', videoRouter);
 app.use('/api/algorithm', algorithmRouter);
+app.use('/api/quiz', quizRouter);
