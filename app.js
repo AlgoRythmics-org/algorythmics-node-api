@@ -70,13 +70,16 @@ connectDB()
 const Video = require('./models/videoModel'); 
 const Algorithm = require('./models/algorithmModel')
 const Quiz = require('./models/quizModel')
+const Code = require('./models/codeModel')
 
 // Import the routers
 const videoRouter = require('./routes/videoRouter.js');
 const algorithmRouter = require('./routes/algorithmRouter.js')
 const quizRouter = require('./routes/quizRouter.js')
+const codeRouter = require('./routes/codeRouter.js')
 
 // Use the routers with different paths
 app.use('/api/video', videoRouter);
 app.use('/api/algorithm', algorithmRouter);
 app.use('/api/quiz', quizRouter);
+app.use('/api/code', codeRouter);
