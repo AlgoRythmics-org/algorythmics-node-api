@@ -11,6 +11,14 @@ const codeSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Algorithm',  
         required: true
+    },
+    answers: {
+        type: String,
+        required: true
+    },
+    correct_answers: {
+        type: String,
+        required: true
     }
 });
 
