@@ -45,5 +45,4 @@ const algorithmSchema = new mongoose.Schema({
 });
 
 const Algorithm = mongoose.model('Algorithm', algorithmSchema);
-
 module.exports = { Algorithm };
